@@ -3,8 +3,8 @@ class LcCli < Formula
 
   desc "Practice LeetCode from your terminal"
   homepage "https://github.com/Elliott-byte/lc-cli"
-  url "https://github.com/Elliott-byte/lc-cli/archive/refs/tags/v0.7.8.tar.gz"
-  sha256 "00c11a2e83c9dd270b1b0ed6cd34aa17ea09f3297749ff5219a03952d75a7624"
+  url "https://github.com/Elliott-byte/lc-cli/archive/refs/tags/v0.7.9.tar.gz"
+  sha256 "466338c20950eba623b0cc8a24edc17fab86d1aa66cd49a1dcd1cf650d8a21db"
   license "MIT"
 
   depends_on "python@3.13"
