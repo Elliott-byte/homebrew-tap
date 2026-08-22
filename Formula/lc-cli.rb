@@ -3,8 +3,8 @@ class LcCli < Formula
 
   desc "Practice LeetCode from your terminal"
   homepage "https://github.com/Elliott-byte/lc-cli"
-  url "https://github.com/Elliott-byte/lc-cli/archive/refs/tags/v0.7.58.tar.gz"
-  sha256 "3c520f56fdba55ea2aa9c601b7700080ce805880257907790a607654eb9d30c6"
+  url "https://github.com/Elliott-byte/lc-cli/archive/refs/tags/v0.7.59.tar.gz"
+  sha256 "9bfd659863fd0993a661a0142a35e7fb6ccca34c4251af49692070f30b149c1e"
   license "MIT"
 
   depends_on "python@3.13"
@@ -104,14 +104,29 @@ class LcCli < Formula
     sha256 "b40c219edccc4564530c96f8f1556f6202b37cda964d1cbd7bd2b7e68b40a245"
   end
 
-  resource "tree-sitter-markdown" do
-    url "https://files.pythonhosted.org/packages/9a/87/8f705d8f99337c8a691bcc8c22d89ddd323eb2b860a78ae2e894b9f7ade1/tree_sitter_markdown-0.5.1.tar.gz"
-    sha256 "6c69d7270a7e09be8988ced44584c09a6a4f541cea0dc394dd1c1a5ac3b5601d"
-  end
-
+  # A wheel on purpose: the grammar sdists are wheel-first upstreams whose
+  # source builds are broken (missing scanner objects / headers).
   resource "tree-sitter-python" do
-    url "https://files.pythonhosted.org/packages/b8/8b/c992ff0e768cb6768d5c96234579bf8842b3a633db641455d86dd30d5dac/tree_sitter_python-0.25.0.tar.gz"
-    sha256 "b13e090f725f5b9c86aa455a268553c65cadf325471ad5b65cd29cac8a1a68ac"
+    on_macos do
+      on_arm do
+        url "https://files.pythonhosted.org/packages/e6/1d/60d8c2a0cc63d6ec4ba4e99ce61b802d2e39ef9db799bdf2a8f932a6cd4b/tree_sitter_python-0.25.0-cp310-abi3-macosx_11_0_arm64.whl"
+        sha256 "480c21dbd995b7fe44813e741d71fed10ba695e7caab627fb034e3828469d762"
+      end
+      on_intel do
+        url "https://files.pythonhosted.org/packages/cf/64/a4e503c78a4eb3ac46d8e72a29c1b1237fa85238d8e972b063e0751f5a94/tree_sitter_python-0.25.0-cp310-abi3-macosx_10_9_x86_64.whl"
+        sha256 "14a79a47ddef72f987d5a2c122d148a812169d7484ff5c75a3db9609d419f361"
+      end
+    end
+    on_linux do
+      on_arm do
+        url "https://files.pythonhosted.org/packages/40/bd/bf4787f57e6b2860f3f1c8c62f045b39fb32d6bac4b53d7a9e66de968440/tree_sitter_python-0.25.0-cp310-abi3-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl"
+        sha256 "be71650ca2b93b6e9649e5d65c6811aad87a7614c8c1003246b303f6b150f61b"
+      end
+      on_intel do
+        url "https://files.pythonhosted.org/packages/aa/cb/d9b0b67d037922d60cbe0359e0c86457c2da721bc714381a63e2c8e35eba/tree_sitter_python-0.25.0-cp310-abi3-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl"
+        sha256 "86f118e5eecad616ecdb81d171a36dde9bef5a0b21ed71ea9c3e390813c3baf5"
+      end
+    end
   end
 
   resource "textual" do
