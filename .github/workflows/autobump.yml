@@ -38,6 +38,8 @@ jobs:
         uses: Homebrew/actions/git-user-config@fd832223f9f99ebf0244dd20658680e5d4aca049 # 2026.08.03.2
 
       - name: Bump formulae
+        # Repository Actions settings must allow workflow-created pull
+        # requests; brew bump pushes its branch and then opens the PR.
         env:
           HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           HOMEBREW_GIT_COMMITTER_NAME: ${{ steps.git_setup.outputs.name }}
