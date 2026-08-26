@@ -27,6 +27,11 @@ jobs:
       - name: Set up Homebrew
         id: set-up-homebrew
         uses: Homebrew/actions/setup-homebrew@fd832223f9f99ebf0244dd20658680e5d4aca049 # 2026.08.03.2
+        # `brew bump` temporarily disables API formula loading while updating
+        # Python resources. Keep core checked out so dependencies such as
+        # python@3.13 remain resolvable in that phase.
+        with:
+          core: true
 
       - name: Set up git
         id: git_setup
